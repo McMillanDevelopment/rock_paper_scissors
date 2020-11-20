@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors!</title>
+</head>
+<body>
+    <h1>Rock, Paper, Scissors!</h1>
+
+    <script>
+
+ function computerPlay (playerSelection, computerSelection) {
+    //  makes input case insensitive
+    const pChoice = playerSelection.toLowerCase()
+    const cChoice = computerSelection.toLowerCase()
+    let result = ""
+        if ((pChoice == "rock" && cChoice == "paper") || (pChoice == "paper" && cChoice == "scissors") || (pChoice == "scissors" && cChoice == "rock")) {
+            result = "You lose"
+            console.log(result)
+        } else {
+            result = "You win"
+            console.log(result)
+        };
+ };
+
+ computerPlay ("paper", "scissors")
+
+// console.log() works fine but return result is not functioning
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
