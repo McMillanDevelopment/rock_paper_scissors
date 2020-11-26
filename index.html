@@ -2,44 +2,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock, Paper, Scissors!</title>
+    <title>Document</title>
 </head>
 <body>
-    <h1>Rock, Paper, Scissors!</h1>
+    <button class="button">Lets Play</button>
 
-    <script>
-
- function computerPlay (playerSelection, computerSelection) {
-    //  makes input case insensitive
-    const pChoice = playerSelection.toLowerCase()
-    const cChoice = computerSelection.toLowerCase()
-    let result = ""
-        if ((pChoice == "rock" && cChoice == "paper") || (pChoice == "paper" && cChoice == "scissors") || (pChoice == "scissors" && cChoice == "rock")) {
-            result = "You lose"
-            console.log(result)
-        } else {
-            result = "You win"
-            console.log(result)
-        };
- };
-
- computerPlay ("paper", "scissors")
-
-// console.log() works fine but return result is not functioning
+<Script>
 
 
+document.querySelector("button").addEventListener('click', playerPlay);
+
+function playerPlay () {
+    let playerSelection = promptME();
+    let computerSelection =  computerPlay()
+    function promptME () {
+        let playerSelection = prompt("Rock, Paper, or Scissors").toLowerCase();
+        return playerSelection
+    };
+    function computerPlay () {
+    let computerOptions = ["Rock", "Paper", "Scissors"];
+    let computerSelection = computerOptions[Math.floor(Math.random() * 3)].toLowerCase();
+    return computerSelection;
+    };
+    console.log(playerSelection);
+    console.log(computerSelection);
+
+    if ((playerSelection == "rock" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "rock")) {
+        let loss = "You lose"
+        console.log("You lose");
+        return loss
+    } else if (playerSelection === computerSelection) {
+        console.log("Its a tie");
+    } else if (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors") {
+        console.log("Typo try again")
+    } else {
+        console.log("You win");
+    };
+};
 
 
 
 
 
 
+</Script>
 
 
-
-
-
-
-    </script>
 </body>
 </html>
