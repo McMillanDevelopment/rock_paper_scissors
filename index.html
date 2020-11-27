@@ -13,37 +13,47 @@
 document.querySelector("button").addEventListener('click', playerPlay);
 
 function playerPlay () {
+    // variables
     let playerSelection = promptME();
-    let computerSelection =  computerPlay()
+    let computerSelection =  computerPlay();
+    // player selection
     function promptME () {
         let playerSelection = prompt("Rock, Paper, or Scissors").toLowerCase();
-        return playerSelection
+        return playerSelection;
     };
+    // computer selection
     function computerPlay () {
-    let computerOptions = ["Rock", "Paper", "Scissors"];
-    let computerSelection = computerOptions[Math.floor(Math.random() * 3)].toLowerCase();
-    return computerSelection;
+        let computerOptions = ["Rock", "Paper", "Scissors"];
+        let computerSelection = computerOptions[Math.floor(Math.random() * 3)].toLowerCase();
+        return computerSelection;
     };
-    console.log(playerSelection);
-    console.log(computerSelection);
-
-    if ((playerSelection == "rock" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "rock")) {
-        let loss = "You lose"
-        console.log("You lose");
-        return loss
-    } else if (playerSelection === computerSelection) {
-        console.log("Its a tie");
-    } else if (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors") {
-        console.log("Typo try again")
-    } else {
-        console.log("You win");
+    // console log player and computer choice
+    console.log("Player chooses " + playerSelection);
+    console.log("Computer chooses " + computerSelection);
+    // win conditions
+    function result () {
+        let winCount = 0;
+        let lossCount = 0;
+        if ((playerSelection == "rock" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "rock")) {
+            let loss = "You lose";
+            console.log(loss);
+            return lossCount++;
+        } else if (playerSelection === computerSelection) {
+            let tie = "Its a tie";
+            console.log(tie);
+        } else if (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors") {
+            let typo = "Typo try again";
+            console.log(typo);
+        } else {
+            let win = "You win!";
+            console.log(win);
+            return winCount++;
+        };
     };
+    // score counter
+    let score = result();
+    console.log(score);
 };
-
-
-
-
-
 
 </Script>
 
