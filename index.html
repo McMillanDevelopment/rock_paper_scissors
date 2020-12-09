@@ -2,77 +2,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Examples
+    <link rel="stylesheet" href="styles.css">
+    <title>Rock, Paper, Scissors!
     </title>
 </head>
 <body>
-    <button class="button">Lets Play</button>
-    
-
-    <script>
-document.querySelector("button").addEventListener('click', overallGame);
-
-let roundCountTotal = 0;
-
-function overallGame () {
-    roundCountTotal = nest();
-    function nest () {
-            if (roundCountTotal <= 4) {
-            function game () {
-
-                function playerChoice () {
-                    return prompt("Rock, Paper, or Scissors").toLowerCase();
-                };
-
-                function computerChoice () {
-                    let computerOptions = ["Rock", "Paper", "Scissors"];
-                    return computerOptions[Math.floor(Math.random() * 3)].toLowerCase();
-                };
-
-                let playerSelection = playerChoice();
-                console.log(playerSelection);
-                let computerSelection = computerChoice();
-                console.log(computerSelection);
-
-                function singleRound () {
-                    if ((playerSelection == "rock" && computerSelection == "paper") || (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock")) {
-                        let loss = "You Lose!";
-                        return loss;
-                    } else if (playerSelection === computerSelection) {
-                        let tie = "Its a tie";
-                        return tie;
-                    } else if ((playerSelection !== "rock") && (playerSelection !== "paper") && (playerSelection !== "scissors")) {
-                        let typo = "Its a typo, try again";
-                        return typo;
-                    } else {
-                        let win = "You Win!";
-                        return win;
-                    };
-                };
-                let singleRoundResult = singleRound();
-                console.log(singleRoundResult);
-
-                function roundCount () {
-                    if (singleRoundResult === "You Win!" || singleRoundResult === "You Lose!") {
-                        return 1;
-                    } else {
-                        console.log("Play another round!");
-                        return 0;
-                    };
-                };
-            let roundResult = roundCount();
-            return roundResult;
-            };
-        roundCountTotal = roundCountTotal + game();
-        console.log(roundCountTotal)
-        };
-    return roundCountTotal;
-    };
-};
 
 
-
-
-    </script>
+    <div id="container">
+        <h1>Rock, Paper, Scissors!</h1>
+        <h2>First one to five wins.</h2>
+        <button class="button" id="rock">Rock</button>
+        <button class="button" id="paper">Paper</button>
+        <button class="button" id="scissors">Scissors</button>
+        <p>Score: </p>
+    </div>
 </body>
+<script src="script.js">
+
+</script>
 </html>
