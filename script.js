@@ -3,8 +3,9 @@
 let playerSelection = "";
 let computerSelection = "";
 const buttons = document.getElementsByClassName('button');
-let singleRoundResult = playerChoice();
 let roundCountTotal = 1;
+let result = document.querySelector("#result");
+
 
 // Computer Selection
 function computerChoice () {
@@ -15,13 +16,18 @@ function computerChoice () {
 // PlayerSelection
 
 function playerChoice(pChoice) {
+
     for(i = 0; i < buttons.length; i++) {
         pChoice = buttons[i].addEventListener('click', function(e) {
             playerSelection = e.target.innerText.toLowerCase();
             computerChoice();
-            console.log(`Player: ${playerSelection}\nComputer: ${computerSelection}`)
-            console.log(singleRound());
-            console.log(roundCount());
+            if(roundCountTotal <= 5) {
+                console.log(`Player: ${playerSelection}\nComputer: ${computerSelection}`)
+                console.log(singleRound());
+                console.log(roundCount());
+            } else {
+                return;
+            };
         });
     };
 };
@@ -61,7 +67,7 @@ function roundCount () {
 
 
 // Function Calls
-// playerChoice(playerSelection);
+playerChoice(playerSelection);
 // computerChoice();
 // singleRound();
 // roundCount();
