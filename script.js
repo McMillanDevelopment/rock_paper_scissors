@@ -4,7 +4,15 @@ let playerSelection = "";
 let computerSelection = "";
 const buttons = document.getElementsByClassName('button');
 let roundCountTotal = 1;
-let result = document.querySelector("#result");
+let playerCountTotal = 0;
+let computerCountTotal = 0;
+// DOM manipulation variables
+let result = document.querySelector('#result');
+let player = document.querySelector('#player');
+let computer = document.querySelector('#computer');
+let score = document.querySelector('#score');
+let playerScore = document.querySelector('#playerScore');
+let computerScore = document.querySelector('#computerScore');
 
 
 // Computer Selection
@@ -22,9 +30,22 @@ function playerChoice(pChoice) {
             playerSelection = e.target.innerText.toLowerCase();
             computerChoice();
             if(roundCountTotal <= 5) {
-                console.log(`Player: ${playerSelection}\nComputer: ${computerSelection}`)
-                console.log(singleRound());
-                console.log(roundCount());
+                // console.log(`Player: ${playerSelection}\nComputer: ${computerSelection}`)
+                player.textContent = playerSelection;
+                playerScore.textContent = playerCountTotal;
+                computer.textContent = computerSelection;
+                computerScore.textContent = computerCountTotal;
+                score.textContent = roundCountTotal;
+                // console.log(singleRound());
+                result.textContent = singleRound();
+                roundCount();
+                if(roundCountTotal === 6) {
+                    if(playerCountTotal > computerCountTotal) {
+                        result.textContent = "YOU WON THE WHOLE ENTIRE GAME"
+                    } else {
+                        result.textContent = "YOU LOST THE WHOLE ENTIRE GAME"
+                    };
+                }
             } else {
                 return;
             };
@@ -53,7 +74,14 @@ function singleRound() {
 
 function roundCount () {
     if (singleRound() === "You Win!" || singleRound() === "You Lose!") {
-        return roundCountTotal++;
+        roundCountTotal++;
+        if (singleRound() === "You Win!") {
+            playerCountTotal++;
+            console.log(playerCountTotal + "player Count");
+        } else if ( singleRound() === "You Lose!") {
+            computerCountTotal++;
+            console.log(computerCountTotal + "computer count");
+        };
     } else {
         console.log("Play another round!");
         return 0;
